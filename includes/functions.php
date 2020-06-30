@@ -24,14 +24,14 @@ function randomCode($length = 16){
 
 	$key = '';
 	for($i=0; $i<$length; $i++)
-		$key .= $pattern{mt_rand(0, strlen($pattern)-1)};
+		$key .= $pattern[mt_rand(0, strlen($pattern)-1)];
 
 	return $key;
 }
 
 // Get URL of current page
 function getPageURL(){
-	$s = empty($_SERVER['HTTPS']) ? '' : ($_SERVER['HTTPS'] == 'on') ? 's' : '';
+	$s = empty($_SERVER['HTTPS']) ? '' : (($_SERVER['HTTPS'] == 'on') ? 's' : '');
 	$protocol = substr(strtolower($_SERVER['SERVER_PROTOCOL']), 0, strpos(strtolower($_SERVER['SERVER_PROTOCOL']), '/')) . $s;
 	$port = ($_SERVER['SERVER_PORT'] == '80') ? '' : (':' . $_SERVER['SERVER_PORT']);
 	return $protocol . '://' . $_SERVER['SERVER_NAME'] . $port . $_SERVER['REQUEST_URI'];
